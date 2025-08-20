@@ -3,7 +3,7 @@
 
 import { NextResponse } from "next/server";
 
-let users: { username: string; password: string }[] = [];
+const users: { username: string; password: string }[] = [];
 
 export async function POST(req: Request) {
   const { username, password, action } = await req.json();

@@ -18,7 +18,6 @@ export function ForgotPassword({ className, ...props }: React.ComponentProps<"fo
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [loading, setLoading] = useState(false);
-  const isFormValid = username.trim() && password && confirmPassword && password === confirmPassword;
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -48,7 +47,7 @@ export function ForgotPassword({ className, ...props }: React.ComponentProps<"fo
 
         if (!res.ok) throw new Error(data.message || "Signup failed");
         else{
-        let message = "Password changed successfully!"
+        const message = "Password changed successfully!"
         setSuccess(true);
         setTimeout(() => { // for effects
            router.push(`/success_signup?message=${encodeURIComponent(message)}`);

@@ -18,7 +18,6 @@ export function SignupForm({ className, ...props }: React.ComponentProps<"form">
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [loading, setLoading] = useState(false);
-  const isFormValid = username.trim() && password && confirmPassword && password === confirmPassword;
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -50,7 +49,7 @@ export function SignupForm({ className, ...props }: React.ComponentProps<"form">
           newErrors.username = data.message
         }
         else{
-          let message = "Signup successful!"
+          const message = "Signup successful!"
           setSuccess(true);
           setTimeout(() => { // for effects
             router.push(`/success_signup?message=${encodeURIComponent(message)}`);
